@@ -137,11 +137,11 @@ a {
 }
 
 .fullscreen img {
-  width: 20px; 
-  height: 20px; 
+  width: 20px;
+  height: 20px;
 }
 @media screen and (max-width: 992px) {
-  .fullscreen{
+  .fullscreen {
     display: none;
   }
   .currentWeather {
@@ -168,5 +168,106 @@ a {
   }
   .forecast {
     height: auto;
+  }
+}
+
+.weather-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(49, 49, 49, 0.85);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-loader {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.cloud {
+  width: 120px;
+  height: 60px;
+  background: #d3d3d3;
+  border-radius: 50px;
+  position: relative;
+  animation: float 2s ease-in-out infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: #d3d3d3;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 10px;
+}
+
+.cloud::after {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  right: 10px;
+}
+
+.rain div {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 20px;
+  margin-left: -2px;
+  background: #3498db;
+  border-radius: 2px;
+  animation: rain 0.6s linear infinite;
+}
+
+.rain div:nth-child(1) {
+  left: 40%;
+  animation-delay: 0s;
+}
+.rain div:nth-child(2) {
+  left: 50%;
+  animation-delay: 0.2s;
+}
+.rain div:nth-child(3) {
+  left: 60%;
+  animation-delay: 0.4s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rain {
+  0% {
+    height: 0;
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    height: 20px;
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(30px);
+    opacity: 0;
   }
 }

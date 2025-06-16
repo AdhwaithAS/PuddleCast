@@ -180,7 +180,19 @@ export default function Home() {
     }
   }, [coords]);
 
-  if (!weather) return <p>Loading weather...</p>;
+  if (!weather)
+    return (
+      <div className="weather-loader-overlay">
+        <div className="weather-loader">
+          <div className="cloud"></div>
+          <div className="rain">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    );
 
   const { current_weather, daily } = weather;
   const now = new Date();
@@ -237,13 +249,24 @@ export default function Home() {
         />
       </button>
       <div className="container ">
-        {weatherData ? <></> : <p>Loading weather...</p>}
+        {weatherData ? (
+          <></>
+        ) : (
+          <div className="weather-loader-overlay">
+            <div className="weather-loader">
+              <div className="cloud"></div>
+              <div className="rain">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="row">
           <div className="col-lg-4 col-sm-12 degree">
             <div className="degree_container">
-              <h1 className="degree_text">
-                {current_weather.temperature} <span>°C</span>
-              </h1>
+              <h1 className="degree_text">{current_weather.temperature} °C</h1>
               <h2 className="location">{location}</h2>
               <h3 className="subinfo">
                 {time} | H:

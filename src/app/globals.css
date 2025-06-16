@@ -1,25 +1,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --text: #ffff;
 }
 
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  /* max-height: 100vh; */
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "montserrat";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -35,8 +29,144 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.row {
+  padding: 0;
+  max-height: 100vh !important;
+  margin: 0 !important;
+}
+.hero {
+  color: var(--text);
+  height: 100vh;
+  width: 100vw;
+  background-color: #171717;
+  background-size: cover;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+}
+
+.degree {
+  height: 100vh;
+}
+.degree_container {
+  border-radius: 10px;
+  color: white;
+  text-shadow: 2px 2px 4px #171717;
+  background-color: transparent;
+  margin-top: 100%;
+}
+
+.degree_text {
+  font-size: 100px;
+}
+.location {
+  font-size: 40px;
+}
+.subinfo {
+  font-size: 22px;
+}
+
+.cloud_text {
+  font-size: 20px;
+}
+.currentWeather {
+  overflow: hidden;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: #242c2e;
+  opacity: 80%;
+  transition: 1s;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  height: 250px;
+  padding-top: 30px;
+}
+.center {
+  text-align: center;
+}
+.padding {
+  padding: 100px;
+  padding-top: 100px;
+}
+
+.forecast {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: #242c2e;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  height: 40vh;
+  align-items: center;
+  margin-top: 20px !important;
+  padding-left: 40px !important;
+  opacity: 80%;
+  padding-right: 30px !important;
+  padding-top: 20px;
+}
+
+.progress {
+  height: 5px !important;
+}
+.align-center {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.day-text {
+  font-size: 17px;
+}
+.temp {
+  font-size: 18px;
+}
+
+.forecas:hover {
+  opacity: 90%;
+}
+.currentWeather:hover {
+  opacity: 90%;
+}
+
+.fullscreen {
+  z-index: 9999;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background-color: transparent;
+}
+
+.fullscreen img {
+  width: 20px; 
+  height: 20px; 
+}
+@media screen and (max-width: 992px) {
+  .fullscreen{
+    display: none;
+  }
+  .currentWeather {
+    padding: 0%;
+  }
+  .padding {
+    padding: 0%;
+  }
+  .hero {
+    height: 270vh !important;
+  }
+  .degree {
+    margin-bottom: 10px;
+    height: auto;
+  }
+  .degree_container {
+    /* height: auto; */
+    margin-top: 0% !important;
+  }
+  .currentWeather {
+    text-align: center;
+    padding-top: 10px;
+    height: 850px;
+  }
+  .forecast {
+    height: auto;
   }
 }

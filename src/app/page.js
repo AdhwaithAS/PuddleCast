@@ -101,7 +101,6 @@ export default function Home() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          console.log(position.coords.latitude);
           setCoords({
             lat: position.coords.latitude,
             lon: position.coords.longitude,
@@ -150,8 +149,8 @@ export default function Home() {
         const options = {
           method: "GET",
           headers: {
-            "x-rapidapi-key": process.env.API_KEY,
-            "x-rapidapi-host": process.env.API_HOST,
+            "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
+            "x-rapidapi-host": process.env.NEXT_PUBLIC_API_HOST,
           },
         };
 
@@ -226,7 +225,6 @@ export default function Home() {
         })`,
       }}
     >
-      {" "}
       <button className="fullscreen">
         <Image
           src={"/fullscreen.png"}

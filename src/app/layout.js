@@ -2,7 +2,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import AddBootstrap from "./AddBootstrap.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { Analytics } from "@vercel/analytics/next";
 const montserrat = Montserrat({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -67,6 +67,7 @@ export default function RootLayout({ children }) {
         className={`${montserrat.variable}`}
         style={{ fontFamily: "montserrat" }}
       >
+        <Analytics />
         <AddBootstrap />
         {children}
       </body>

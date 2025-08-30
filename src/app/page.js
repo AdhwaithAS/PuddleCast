@@ -3,6 +3,31 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
+  const [isGPSEnabled, setIsGPSEnabled] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const checkGPS = () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        () => {
+          setIsGPSEnabled(true);
+          setErrorMessage("");
+        },
+        (error) => {
+          setIsGPSEnabled(false);
+          if (error.code === error.PERMISSION_DENIED) {
+            setErrorMessage("GPS permission denied.");
+          } else {
+            setErrorMessage("Unable to access GPS.");
+          }
+        }
+      );
+    } else {
+      setIsGPSEnabled(false);
+      setErrorMessage("Geolocation is not supported by this browser.");
+    }
+  };
+
   const [weatherData, setData] = useState(null);
   const [weather, setWeather] = useState(null);
   const [time, setTime] = useState("");
@@ -117,6 +142,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    checkGPS();
     if (coords.lat && coords.lon) {
       fetch(
         `https://nominatim.openstreetmap.org/reverse?lat=${coords.lat}&lon=${coords.lon}&format=json`
@@ -180,16 +206,22 @@ export default function Home() {
     }
   }, [coords]);
 
-  if (!weather)
+  if (!isGPSEnabled)
     return (
-      <div className="weather-loader-overlay">
-        <div className="weather-loader">
-          <div className="cloud"></div>
-          <div className="rain">
-            <div></div>
-            <div></div>
-            <div></div>
+      <div>
+        <div className="weather-loader-overlay">
+          <div className="weather-loader">
+            <div className="cloud"></div>
+            <div className="rain">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
+        </div>
+        <br />
+        <div style={{ textAlign: "center", color: "white" }}>
+          <p style={{ color: "blue" }}>Enable The GPS to Continue</p>
         </div>
       </div>
     );

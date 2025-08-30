@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   const [weatherData, setData] = useState(null);
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState(" ");
   const [time, setTime] = useState("");
   const [coords, setCoords] = useState({ lat: 70.714, lon: -74.005 });
   const [error, setError] = useState(null);

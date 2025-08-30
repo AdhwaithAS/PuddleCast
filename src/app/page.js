@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-
+import sampleData from "./sampleData.json";
 export default function Home() {
   const [isGPSEnabled, setIsGPSEnabled] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   const [weatherData, setData] = useState(null);
-  const [weather, setWeather] = useState(" ");
+  const [weather, setWeather] = useState(sampleData);
   const [time, setTime] = useState("");
   const [coords, setCoords] = useState({ lat: 70.714, lon: -74.005 });
   const [error, setError] = useState(null);
@@ -260,6 +260,8 @@ export default function Home() {
       document.exitFullscreen();
     }
   }
+  console.log(weather);
+
   return (
     <div
       className="hero"
